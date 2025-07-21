@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const travelEmpty = (HD / 1000) / SE * 3600;
     const cycleDT = loadingTime + travelLoad + travelEmpty + MT + DTD;
     const ritaseHour = 3600 / cycleDT;
-    const prodDT = EFD * VC * 3600 / cycleDT;
+    const prodDT = EFD * VC * 3600 * SF / cycleDT;
     const prodDTTon = prodDT * Density;
     const fleetMatch = prodExcaTon / prodDTTon;
 
@@ -107,13 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
       <input type="text" value="${totalSpottingTime.toFixed(2)}" readonly>
 
       <label>Efisiensi Kerja Excavator</label>
-      <input type="text" value="${effExca.toFixed(2)}" readonly>
+      <input type="text" value="${effExca.toFixed(4)}" readonly>
 
-      <label>Productivity Excavator (Ton/hour)</label>
-      <input type="text" value="${prodExcaTon.toFixed(2)}" readonly>
+      <label>Productivity Excavator (bcm/hour)</label>
+      <input type="text" value="${prodExca.toFixed(2)}" readonly>
 
-      <label>Cycle Time Dumptruck (m)</label>
-      <input type="text" value="${(cycleDT / 60).toFixed(2)}" readonly>
+      <label>Cycle Time Dumptruck (s)</label>
+      <input type="text" value="${cycleDT.toFixed(2)}" readonly>
 
       <label>Ritase / Hour</label>
       <input type="text" value="${ritaseHour.toFixed(2)}" readonly>

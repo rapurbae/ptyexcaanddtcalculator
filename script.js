@@ -73,7 +73,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
   const travelEmpty = (HD / 1000) / SE * 3600;
   const cycleDT = loadingTime + travelLoad + travelEmpty + MT + DTD;
   const ritaseHour = 3600 / cycleDT;
-  const prodDT = EFD * VC * 3600 * SF / cycleDT;
+  const prodDT = EFD * VC * 3600 * Swell / cycleDT;
   const fleetMatch = prodExca / prodDT;
 
   document.getElementById("output").innerHTML = `

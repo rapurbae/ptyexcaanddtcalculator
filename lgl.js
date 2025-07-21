@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const travelEmpty = (HD / 1000) / SE * 3600;
     const cycleDT = loadingTime + travelLoad + travelEmpty + MT + DTD;
     const ritaseHour = 3600 / cycleDT;
-    const prodDT = EFD * VC * 3600 * SF / cycleDT;
+    const prodDT = EFD * VC * 3600 * Swell / cycleDT;
     const prodDTTon = prodDT * Density;
     const fleetMatch = prodExcaTon / prodDTTon;
 

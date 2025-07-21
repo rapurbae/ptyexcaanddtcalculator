@@ -73,7 +73,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
   const travelEmpty = (HD / 1000) / SE * 3600;
   const cycleDT = loadingTime + travelLoad + travelEmpty + MT + DTD;
   const ritaseHour = 3600 / cycleDT;
-  const prodDT = EFD * VC * 3600 / cycleDT;
+  const prodDT = EFD * VC * 3600 * SF / cycleDT;
   const fleetMatch = prodExca / prodDT;
 
   document.getElementById("output").innerHTML = `
@@ -85,7 +85,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     <input type="text" value="${effExca.toFixed(2)}" readonly>
     <label>Productivity Excavator (bcm/hour)</label>
     <input type="text" value="${prodExca.toFixed(2)}" readonly>
-    <label>Cycle Time Dumptruck (m)</label>
+    <label>Cycle Time Dumptruck (s)</label>
     <input type="text" value="${(cycleDT / 60).toFixed(2)}" readonly>
     <label>Ritase / Hour</label>
     <input type="text" value="${ritaseHour.toFixed(2)}" readonly>

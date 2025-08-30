@@ -105,7 +105,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
 
   const fleetMatch = (prodDT > 0) ? prodExca / prodDT : 0;
 
-  fetch("https://script.google.com/macros/s/AKfycbwAZ93T521tA0gI7eWfgCac1RwU6OBn5n6-nEAtd1-mxj7dpVZ5CjCInVXRy5j4umDg2g/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbz72ePllGHWXXKnMv45_5J8ZA0G8a_6n62xAe16ZYhpxwK3Y351T2u30auFp4z5XkFDMw/exec", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
@@ -144,3 +144,4 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     <input type="text" value="${fleetMatch.toFixed(2)}" readonly>
   `;
 });
+

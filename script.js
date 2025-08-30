@@ -82,8 +82,8 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
                     spotting2Time + dumpingTime + spotting3Time +
                     swingEmptyTime + spotting4Time;
 
-  const totalSpotting = spotting1Time + spotting2Time + spotting3Time + spotting4Time;
-  const pureCycleExca = cycleExca - totalSpotting;
+  const totalSpottingTime = spotting1Time + spotting2Time + spotting3Time + spotting4Time;
+  const pureCycleExca = cycleExca - totalSpottingTime;
   const effExca = (cycleExca > 0) ? pureCycleExca / cycleExca : 0;
 
   const q = BC * F;
@@ -129,7 +129,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     <label>Cycle Time Excavator 300 (s)</label>
     <input type="text" value="${cycleExca.toFixed(2)}" readonly>
     <label>Total Spotting Time (s)</label>
-    <input type="text" value="${totalSpotting.toFixed(2)}" readonly>
+    <input type="text" value="${totalSpottingTime.toFixed(2)}" readonly>
     <label>Efisiensi Kerja Excavator</label>
     <input type="text" value="${effExca.toFixed(2)}" readonly>
     <label>Productivity Excavator (bcm/hour)</label>

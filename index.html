@@ -149,6 +149,12 @@
     <form id="calc-form">
       <section>
         <h2>DATA EXCAVATOR</h2>
+        <label for="">No. Lambung Exca 300</label>
+        <input type="text" step="any" placeholder="No. Lambung Exca 300" id="lambungexca" required>
+        <label for="">Area</label>
+        <input type="text" step="any" placeholder="Area" id="area" required>
+        <label for="">Cuaca</label>
+        <input type="text" step="any" placeholder="Cuaca" id="cuaca" required>
         <label for="">Bucket Capacity (Bcm)</label>
         <input type="number" step="any" placeholder="Bucket Capacity (Bcm)" id="bucketCapacity" required>
         <label for="">Bucket Fill Factor</label>
@@ -232,19 +238,35 @@
         <h2>DATA DUMP TRUCK</h2>
         <label for="">Vessel Capacity (Bcm)</label>
         <input type="number" step="any" placeholder="Vessel Capacity (Bcm)" id="vesselCapacity" required>
-        <label for="">Manuver Time (Seconds)</label>
-        <input type="number" step="any" placeholder="Manuver Time (Seconds)" id="manuverTime" required>
-        <label for="">Dumping Time (Seconds)</label>
-        <input type="number" step="any" placeholder="Dumping Time (Seconds)" id="dumpingTime" required>
-        <label for="">Speed Load (Km/Hour)</label>
-        <input type="number" step="any" placeholder="Speed Load (Km/Hour)" id="speedLoad" required>
-        <label for="">Speed Empty (Km/Hour)</label>
-        <input type="number" step="any" placeholder="Speed Empty (Km/Hour)" id="speedEmpty" required>
-        <label for="">Efisiensi Kerja Dumptruck</label>
-        <input type="number" step="any" placeholder="Efisiensi Kerja Dumptruck" id="efisiensiKerjaDumptruck" required>
-        <label for="">Hauling Distance (meters)</label>
-        <input type="number" step="any" placeholder="Hauling Distance (meters)" id="haulingDistance" required>
       </section>
+
+      <h2>DATA CYCLE TIME DUMP TRUCK</h2>
+        <table class="time-call-table">
+          <thead>
+            <tr>
+              <th>Tahapan</th>
+              <th>Waktu<br>(HH:MM:SS.mmm)</th>
+              <th>Catat Jam</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="phase-name">Start Loading</td>
+              <td><span class="time-display" id="start-loading-time-dt">-</span></td>
+              <td><button type="button" class="klik-button" onclick="recordTime('startLoadingdt')">Klik</button></td>
+            </tr>
+            <tr>
+              <td class="phase-name">Manuver Time </td>
+              <td><span class="time-display" id="manuver-time">-</span></td>
+              <td><button type="button" class="klik-button" onclick="recordTime('manuver')">Klik</button></td>
+            </tr>
+          </tbody>
+          <input type="hidden" id="startLoadingdt">
+          <input type="hidden" id="manuver">
+
+        </table>
+        
+        <button type="button" class="reset-button" onclick="resetTimeCall()">Reset Time Call</button>
 
       <button type="submit">CALCULATE</button>
 

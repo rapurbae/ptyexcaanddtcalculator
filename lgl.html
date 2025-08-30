@@ -138,7 +138,7 @@
   </style>
 </head>
 <body>
-    <h1>Excavator 300 & Dump Truck Productivity Calculator</h1>
+    <h1>Excavator 300 & Dump Truck Productivity Calculator</h1>
     <div class="tabs">
       <button class="tab" onclick="location.href='index.html'">MATERIAL OB</button>
       <button class="tab active">MATERIAL LGL</button>
@@ -159,92 +159,115 @@
 
         <!-- TIME CALL SECTION -->
         <h2>DATA CYCLE TIME EXCAVATOR</h2>
-        <table class="time-call-table">
-          <thead>
-            <tr>
-              <th>Tahapan</th>
-              <th>Waktu<br>(HH:MM:SS.mmm)</th>
-              <th>Catat Jam</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="phase-name">Start Loading</td>
-              <td><span class="time-display" id="start-loading-time">-</span></td>
-              <td><button type="button" class="klik-button" onclick="recordTime('startLoading')">Klik</button></td>
-            </tr>
-            <tr>
-              <td class="phase-name">Digging Time</td>
-              <td><span class="time-display" id="digging-time">-</span></td>
-              <td><button type="button" class="klik-button" onclick="recordTime('digging')">Klik</button></td>
-            </tr>
-            <tr>
-              <td class="phase-name">Spotting Time 1</td>
-              <td><span class="time-display" id="spotting1-time">-</span></td>
-              <td><button type="button" class="klik-button" onclick="recordTime('spotting1')">Klik</button></td>
-            </tr>
-            <tr>
-              <td class="phase-name">Swing Load Time</td>
-              <td><span class="time-display" id="swing-load-time">-</span></td>
-              <td><button type="button" class="klik-button" onclick="recordTime('swingLoad')">Klik</button></td>
-            </tr>
-            <tr>
-              <td class="phase-name">Spotting Time 2</td>
-              <td><span class="time-display" id="spotting2-time">-</span></td>
-              <td><button type="button" class="klik-button" onclick="recordTime('spotting2')">Klik</button></td>
-            </tr>
-            <tr>
-              <td class="phase-name">Dumping Time Exca 300</td>
-              <td><span class="time-display" id="dumping-exca-time">-</span></td>
-              <td><button type="button" class="klik-button" onclick="recordTime('dumpingExca')">Klik</button></td>
-            </tr>
-            <tr>
-              <td class="phase-name">Spotting Time 3</td>
-              <td><span class="time-display" id="spotting3-time">-</span></td>
-              <td><button type="button" class="klik-button" onclick="recordTime('spotting3')">Klik</button></td>
-            </tr>
-            <tr>
-              <td class="phase-name">Swing Empty Time</td>
-              <td><span class="time-display" id="swing-empty-time">-</span></td>
-              <td><button type="button" class="klik-button" onclick="recordTime('swingEmpty')">Klik</button></td>
-            </tr>
-            <tr>
-              <td class="phase-name">Spotting Time 4</td>
-              <td><span class="time-display" id="spotting4-time">-</span></td>
-              <td><button type="button" class="klik-button" onclick="recordTime('spotting4')">Klik</button></td>
-            </tr>
-          </tbody>
-          <input type="hidden" id="startLoading">
-          <input type="hidden" id="digging">
-          <input type="hidden" id="spotting1">
-          <input type="hidden" id="swingLoad">
-          <input type="hidden" id="spotting2">
-          <input type="hidden" id="dumpingExca">
-          <input type="hidden" id="spotting3">
-          <input type="hidden" id="swingEmpty">
-          <input type="hidden" id="spotting4">
-
-        </table>
-        
-        <button type="button" class="reset-button" onclick="resetTimeCall()">Reset Time Call</button>
+      <table class="time-call-table">
+        <thead>
+          <tr>
+            <th>Tahapan</th>
+            <th>Waktu<br>(HH:MM:SS.mmm)</th>
+            <th>Catat Jam</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="phase-name">Start Loading</td>
+            <td><span class="time-display" id="start-loading-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('startLoading')">Klik</button></td>
+          </tr>
+          <tr>
+            <td class="phase-name">Digging Time</td>
+            <td><span class="time-display" id="digging-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('digging')">Klik</button></td>
+          </tr>
+          <tr>
+            <td class="phase-name">Spotting Time 1</td>
+            <td><span class="time-display" id="spotting1-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('spotting1')">Klik</button></td>
+          </tr>
+          <tr>
+            <td class="phase-name">Swing Load Time</td>
+            <td><span class="time-display" id="swing-load-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('swingLoad')">Klik</button></td>
+          </tr>
+          <tr>
+            <td class="phase-name">Spotting Time 2</td>
+            <td><span class="time-display" id="spotting2-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('spotting2')">Klik</button></td>
+          </tr>
+          <tr>
+            <td class="phase-name">Dumping Time Exca 300</td>
+            <td><span class="time-display" id="dumping-exca-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('dumpingExca')">Klik</button></td>
+          </tr>
+          <tr>
+            <td class="phase-name">Spotting Time 3</td>
+            <td><span class="time-display" id="spotting3-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('spotting3')">Klik</button></td>
+          </tr>
+          <tr>
+            <td class="phase-name">Swing Empty Time</td>
+            <td><span class="time-display" id="swing-empty-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('swingEmpty')">Klik</button></td>
+          </tr>
+          <tr>
+            <td class="phase-name">Spotting Time 4</td>
+            <td><span class="time-display" id="spotting4-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('spotting4')">Klik</button></td>
+          </tr>
+        </tbody>
+        <input type="hidden" id="startLoading">
+        <input type="hidden" id="digging">
+        <input type="hidden" id="spotting1">
+        <input type="hidden" id="swingLoad">
+        <input type="hidden" id="spotting2">
+        <input type="hidden" id="dumpingExca">
+        <input type="hidden" id="spotting3">
+        <input type="hidden" id="swingEmpty">
+        <input type="hidden" id="spotting4">
+      </table>
+      
+      <button type="button" class="reset-button" onclick="resetTimeCallExca()">Reset Time Call Excavator</button>
 
       <section>
         <h2>DATA DUMP TRUCK</h2>
-        <label for="">Vessel Capacity (Bcm)</label>
+        <label for="vesselCapacity">Vessel Capacity (Bcm)</label>
         <input type="number" step="any" placeholder="Vessel Capacity (Bcm)" id="vesselCapacity" required>
-        <label for="">Manuver Time (Seconds)</label>
-        <input type="number" step="any" placeholder="Manuver Time (Seconds)" id="manuverTime" required>
-        <label for="">Dumping Time (Seconds)</label>
-        <input type="number" step="any" placeholder="Dumping Time (Seconds)" id="dumpingTime" required>
-        <label for="">Speed Load (Km/Hour)</label>
+        <label for="speedLoad">Speed Load (Km/Hour)</label>
         <input type="number" step="any" placeholder="Speed Load (Km/Hour)" id="speedLoad" required>
-        <label for="">Speed Empty (Km/Hour)</label>
+        <label for="speedEmpty">Speed Empty (Km/Hour)</label>
         <input type="number" step="any" placeholder="Speed Empty (Km/Hour)" id="speedEmpty" required>
-        <label for="">Efisiensi Kerja Dumptruck</label>
+        <label for="efisiensiKerjaDumptruck">Efisiensi Kerja Dumptruck</label>
         <input type="number" step="any" placeholder="Efisiensi Kerja Dumptruck" id="efisiensiKerjaDumptruck" required>
-        <label for="">Hauling Distance (meters)</label>
+        <label for="haulingDistance">Hauling Distance (meters)</label>
         <input type="number" step="any" placeholder="Hauling Distance (meters)" id="haulingDistance" required>
       </section>
+
+      <!-- TIME CALL SECTION DUMP TRUCK -->
+      <h2>DATA CYCLE TIME DUMP TRUCK</h2>
+      <table class="time-call-table">
+        <thead>
+          <tr>
+            <th>Tahapan</th>
+            <th>Waktu<br>(HH:MM:SS.mmm)</th>
+            <th>Catat Jam</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="phase-name">Start Loading DT</td>
+            <td><span class="time-display" id="start-loading-dt-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('startLoadingDT')">Klik</button></td>
+          </tr>
+          <tr>
+            <td class="phase-name">Manuver Time DT</td>
+            <td><span class="time-display" id="manuver-dt-time">-</span></td>
+            <td><button type="button" class="klik-button" onclick="recordTime('manuverDT')">Klik</button></td>
+          </tr>
+        </tbody>
+        <input type="hidden" id="startLoadingDT">
+        <input type="hidden" id="manuverDT">
+      </table>
+      
+      <button type="button" class="reset-button" onclick="resetTimeCallDT()">Reset Time Call Dump Truck</button>
 
       <button type="submit">CALCULATE</button>
 

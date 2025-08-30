@@ -1,5 +1,5 @@
 function recordTime(phaseId) {
-  const now = performance.now() / 1000;
+  const now = performance.now() / 1000; // detik sejak page load
   document.getElementById(phaseId).value = now.toFixed(3);
 
   const timeDisplayId = {
@@ -11,18 +11,24 @@ function recordTime(phaseId) {
     dumpingExca: 'dumping-exca-time',
     spotting3: 'spotting3-time',
     swingEmpty: 'swing-empty-time',
-    spotting4: 'spotting4-time'
+    spotting4: 'spotting4-time',
+    startLoadingdt: 'start-loading-time-dt',
+    manuver: 'manuver-time'
   }[phaseId];
 
   const nowDate = new Date();
-  const timeStr = nowDate.toLocaleTimeString('en-GB') + '.' + nowDate.getMilliseconds().toString().padStart(3, '0');
+  const timeStr = nowDate.toLocaleTimeString('en-GB') + '.' +
+    nowDate.getMilliseconds().toString().padStart(3, '0');
   document.getElementById(timeDisplayId).textContent = timeStr;
 }
 
 function resetTimeCall() {
-  const ids = ['startLoading', 'digging', 'spotting1', 'swingLoad',
-               'spotting2', 'dumpingExca', 'spotting3',
-               'swingEmpty', 'spotting4'];
+  const ids = [
+    'startLoading','digging','spotting1','swingLoad',
+    'spotting2','dumpingExca','spotting3','swingEmpty','spotting4',
+    'startLoadingdt','manuver'
+  ];
+
   ids.forEach(id => {
     document.getElementById(id).value = '';
     const textId = id.replace(/([A-Z])/g, "-$1").toLowerCase() + '-time';
@@ -35,20 +41,14 @@ function resetTimeCall() {
 document.getElementById("calc-form").addEventListener("submit", function (e) {
   e.preventDefault();
 
+  // input utama
   const BC = +document.getElementById("bucketCapacity").value;
   const F = +document.getElementById("fillFactor").value;
-  const TB = +document.getElementById("totalBucket").value;
-  const HD = +document.getElementById("haulingDistance").value;
-  const MT = +document.getElementById("manuverTime").value;
-  const DTD = +document.getElementById("dumpingTime").value;
-  const SL = +document.getElementById("speedLoad").value;
-  const SE = +document.getElementById("speedEmpty").value;
   const VC = +document.getElementById("vesselCapacity").value;
-  const EFD = +document.getElementById("efisiensiKerjaDumptruck").value;
-
   const Swell = 0.82;
 
-  const times = [
+  // ambil timestamp excavator
+  const timesExca = [
     +document.getElementById("startLoading").value,
     +document.getElementById("digging").value,
     +document.getElementById("spotting1").value,
@@ -60,22 +60,52 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     +document.getElementById("spotting4").value
   ];
 
-  const durations = times.slice(1).map((t, i) => t - times[i]);
-  const cycleExca = durations.reduce((a, b) => a + b, 0);
-  const totalSpotting = durations[1] + durations[3] + durations[5] + durations[7];
-  const pureCycle = cycleExca - totalSpotting;
-  const effExca = pureCycle / cycleExca;
+  const durationsExca = [];
+  for (let i = 1; i < timesExca.length; i++) {
+    if (timesExca[i] && timesExca[i-1]) {
+      durationsExca.push(timesExca[i] - timesExca[i-1]);
+    } else {
+      durationsExca.push(0);
+    }
+  }
+
+  const diggingTime   = durationsExca[0];
+  const spotting1Time = durationsExca[1];
+  const swingLoadTime = durationsExca[2];
+  const spotting2Time = durationsExca[3];
+  const dumpingTime   = durationsExca[4];
+  const spotting3Time = durationsExca[5];
+  const swingEmptyTime= durationsExca[6];
+  const spotting4Time = durationsExca[7];
+
+  const cycleExca = diggingTime + spotting1Time + swingLoadTime +
+                    spotting2Time + dumpingTime + spotting3Time +
+                    swingEmptyTime + spotting4Time;
+
+  const totalSpotting = spotting1Time + spotting2Time + spotting3Time + spotting4Time;
+  const pureCycleExca = cycleExca - totalSpotting;
+  const effExca = (cycleExca > 0) ? pureCycleExca / cycleExca : 0;
 
   const q = BC * F;
-  const prodExca = (q * 3600 * effExca * Swell) / cycleExca;
-  const loadingTime = cycleExca * TB;
-  const travelLoad = (HD / 1000) / SL * 3600;
-  const travelEmpty = (HD / 1000) / SE * 3600;
-  const cycleDT = loadingTime + travelLoad + travelEmpty + MT + DTD;
-  const ritaseHour = 3600 / cycleDT;
-  const prodDT = EFD * VC * 3600 * Swell / cycleDT;
-  const fleetMatch = prodExca / prodDT;
+  const prodExca = (cycleExca > 0) ?
+    (q * 3600 * effExca * Swell) / cycleExca : 0;
 
+  const startDT = +document.getElementById("startLoadingdt").value;
+  const manuverDT = +document.getElementById("manuver").value;
+
+  let cycleDT = 0;  
+  if (manuverDT && startDT) {
+    cycleDT = manuverDT - startDT;
+  }
+
+  const prodDT = (cycleDT > 0) ?
+    (VC * 3600 * Swell) / cycleDT : 0;
+
+  const ritaseHour = (cycleDT > 0) ? 60 / (cycleDT / 60) : 0;
+
+  const fleetMatch = (prodDT > 0) ? prodExca / prodDT : 0;
+
+  // tampilkan output
   document.getElementById("output").innerHTML = `
     <label>Cycle Time Excavator 300 (s)</label>
     <input type="text" value="${cycleExca.toFixed(2)}" readonly>

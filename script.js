@@ -105,6 +105,26 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
 
   const fleetMatch = (prodDT > 0) ? prodExca / prodDT : 0;
 
+  fetch("https://script.google.com/macros/s/AKfycbwAZ93T521tA0gI7eWfgCac1RwU6OBn5n6-nEAtd1-mxj7dpVZ5CjCInVXRy5j4umDg2g/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        material: "ob",
+        excavator300: document.getElementById("excavator300").value,
+        area: document.getElementById("area").value,
+        cuaca: document.getElementById("cuaca").value,
+        cycleExca: cycleExca.toFixed(2),
+        totalSpottingTime: totalSpottingTime.toFixed(2),
+        effExca: effExca.toFixed(4),
+        prodExca: prodExca.toFixed(2),
+        cycleDT: cycleDT.toFixed(2),
+        ritaseHour: ritaseHour.toFixed(2),
+        prodDT: prodDT.toFixed(2),
+        prodDTTon: prodDTTon.toFixed(2),
+        fleetMatch: fleetMatch.toFixed(2)  
+      })
+    });
+
   // tampilkan output
   document.getElementById("output").innerHTML = `
     <label>Cycle Time Excavator 300 (s)</label>

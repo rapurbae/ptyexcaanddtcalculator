@@ -61,11 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const BC = +document.getElementById("bucketCapacity").value;
     const F = +document.getElementById("fillFactor").value;
     const TB = +document.getElementById("totalBucket").value;
-    const HD = +document.getElementById("haulingDistance").value;
-    const SL = +document.getElementById("speedLoad").value;
-    const SE = +document.getElementById("speedEmpty").value;
     const VC = +document.getElementById("vesselCapacity").value;
-    const EFD = +document.getElementById("efisiensiKerjaDumptruck").value;
 
     const Swell = 0.93;
     const Density = 1.578;
@@ -124,6 +120,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const prodDT = (VC * 3600 * Swell) / cycleDT;
     const prodDTTon = prodDT * Density;
     const fleetMatch = prodExcaTon / prodDTTon;
+
+    fetch("https://script.google.com/macros/s/AKfycbwAZ93T521tA0gI7eWfgCac1RwU6OBn5n6-nEAtd1-mxj7dpVZ5CjCInVXRy5j4umDg2g/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        material: "lgl",
+        excavator300: document.getElementById("excavator300").value,
+        area: document.getElementById("area").value,
+        cuaca: document.getElementById("cuaca").value,
+        cycleExca: cycleExca.toFixed(2),
+        totalSpottingTime: totalSpottingTime.toFixed(2),
+        effExca: effExca.toFixed(4),
+        prodExca: prodExca.toFixed(2),
+        cycleDT: cycleDT.toFixed(2),
+        ritaseHour: ritaseHour.toFixed(2),
+        prodDT: prodDT.toFixed(2),
+        prodDTTon: prodDTTon.toFixed(2),
+        fleetMatch: fleetMatch.toFixed(2)  
+      })
+    });
 
     document.getElementById("output").innerHTML = `
       <label>Cycle Time Excavator 300 (s)</label>

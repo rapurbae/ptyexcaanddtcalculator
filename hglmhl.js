@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const prodExcaTon = prodExca * Density;
 
     // Perhitungan dump truck sesuai rumus baru
-    const cycleDT = manuverDT - startLoadingDT;
+    const cycleDT = (manuverDT - startLoadingDT) + (cycleExca * TB);
     const ritaseHour = 60 / (cycleDT / 60);
     const prodDT = (VC * 3600 * Swell) / cycleDT;
     const prodDTTon = prodDT * Density;
@@ -169,3 +169,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+

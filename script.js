@@ -45,6 +45,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
   const BC = +document.getElementById("bucketCapacity").value;
   const F = +document.getElementById("fillFactor").value;
   const VC = +document.getElementById("vesselCapacity").value;
+  const TB = +document.getElementById("totalBucket").value;
   const Swell = 0.82;
 
   // ambil timestamp excavator
@@ -95,7 +96,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
 
   let cycleDT = 0;  
   if (manuverDT && startDT) {
-    cycleDT = manuverDT - startDT;
+    cycleDT = (manuverDT - startDT) + (cycleExca * TB);
   }
 
   const prodDT = (cycleDT > 0) ?
@@ -144,4 +145,5 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     <input type="text" value="${fleetMatch.toFixed(2)}" readonly>
   `;
 });
+
 

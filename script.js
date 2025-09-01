@@ -118,7 +118,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
         totalSpottingTime: totalSpottingTime.toFixed(2),
         effExca: effExca.toFixed(4),
         prodExca: prodExca.toFixed(2),
-        cycleDT: cycleDT.toFixed(2),
+        cycleDT: (cycleDT / 60).toFixed(2),
         ritaseHour: ritaseHour.toFixed(2),
         prodDT: prodDT.toFixed(2),
         fleetMatch: fleetMatch.toFixed(2)  
@@ -145,5 +145,6 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     <input type="text" value="${fleetMatch.toFixed(2)}" readonly>
   `;
 });
+
 
 

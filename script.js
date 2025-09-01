@@ -116,7 +116,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
         cuaca: document.getElementById("cuaca").value,
         cycleExca: cycleExca.toFixed(2),
         totalSpottingTime: totalSpottingTime.toFixed(2),
-        effExca: effExca.toFixed(4),
+        effExca: effExca.toFixed(2),
         prodExca: prodExca.toFixed(2),
         cycleDT: (cycleDT / 60).toFixed(2),
         ritaseHour: ritaseHour.toFixed(2),
@@ -145,6 +145,7 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     <input type="text" value="${fleetMatch.toFixed(2)}" readonly>
   `;
 });
+
 
 
 

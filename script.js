@@ -114,12 +114,12 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
         excavator300: document.getElementById("excavator300").value,
         area: document.getElementById("area").value,
         cuaca: document.getElementById("cuaca").value,
-        cycleExca: cycleExca.toFixed(2),
+        cycleExca: cycleExca.toFixed(4),
         totalSpottingTime: totalSpottingTime.toFixed(2),
         effExca: effExca.toFixed(2),
         prodExca: prodExca.toFixed(2),
-        cycleDT: (cycleDT / 60).toFixed(2),
-        ritaseHour: ritaseHour.toFixed(2),
+        cycleDT: cycleDT.toFixed(2),
+        ritaseHour: (ritaseHour / 60).toFixed(2),
         prodDT: prodDT.toFixed(2),
         fleetMatch: fleetMatch.toFixed(2)  
       })
@@ -134,17 +134,18 @@ document.getElementById("calc-form").addEventListener("submit", function (e) {
     <label>Efisiensi Kerja Excavator</label>
     <input type="text" value="${effExca.toFixed(2)}" readonly>
     <label>Productivity Excavator (bcm/hour)</label>
-    <input type="text" value="${prodExca.toFixed(2)}" readonly>
+    <input type="text" value="${prodExca.toFixed(4)}" readonly>
     <label>Cycle Time Dumptruck (s)</label>
-    <input type="text" value="${(cycleDT / 60).toFixed(2)}" readonly>
+    <input type="text" value="${cycleDT.toFixed(2)}" readonly>
     <label>Ritase / Hour</label>
-    <input type="text" value="${ritaseHour.toFixed(2)}" readonly>
+    <input type="text" value="${(ritaseHour / 60).toFixed(2)}" readonly>
     <label>Dumptruck Productivity (bcm/hour)</label>
     <input type="text" value="${prodDT.toFixed(2)}" readonly>
     <label>Fleet Matching</label>
     <input type="text" value="${fleetMatch.toFixed(2)}" readonly>
   `;
 });
+
 
 
 
